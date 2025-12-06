@@ -1,6 +1,10 @@
 import pandas as pd
 from typing import Literal
-from .detectors import *
+from .detectors import (
+    detect_temporal_leakage,
+    detect_label_noise,
+    detect_dag_violations
+)
 
 class CausalGuard:
     def __init__(self, preset: Literal["fraud", "marketing", "general"] = "fraud"):
@@ -9,14 +13,11 @@ class CausalGuard:
 
     def scan(self, data: pd.DataFrame, target: str = None):
         self.issues = []
-        
         self.issues += detect_temporal_leakage(data)
         self.issues += detect_label_noise(data, target)
         self.issues += detect_dag_violations(data, preset=self.preset)
-        self.issues += detect_selection_bias(data)
-        
         return self
 
     def show(self):
-        from .reporter import generate_html_report
-        generate_html_report(self.issues, preset=self.preset)
+        from .reporter import generate_report
+        generate_report(self.issues, preset=self.preset)

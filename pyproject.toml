@@ -1,27 +1,29 @@
-**File 1: pyproject.toml**
-# ```toml
-# [project]
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "causalguard"
 version = "0.1.0"
-description = "Catch causal data bugs before they cost millions"
-authors = [{name = "kbp4154", email = "your.email@gmail.com"}]
+description = "Catch flipped labels, temporal leaks & causal biases before they kill your models"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
+authors = [{name = "kbp4154"}]
 dependencies = [
     "pandas>=2.0",
     "networkx>=3.0",
     "dowhy>=0.11",
     "pydantic>=2.0",
-    "pyathena>=3.0",
     "jinja2",
-    "cleanlab",           # for label noise
+    "pyathena>=3.0",
+    "cleanlab",
     "scikit-learn"
 ]
 
 [project.optional-dependencies]
 dev = ["pytest", "black", "ruff", "jupyter"]
 
-[build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.build_meta"
+[project.urls]
+Homepage = "https://github.com/kbp4154/causalguard"
+Repository = "https://github.com/kbp4154/causalguard"

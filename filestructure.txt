@@ -1,0 +1,23 @@
+causalguard/
+│
+├── pyproject.toml                     ← Fixed & perfect
+├── README.md                          ← Final viral version
+├── LICENSE                            ← MIT license
+│
+├── causalguard/
+│   ├── __init__.py
+│   ├── validator.py
+│   ├── reporter.py
+│   │
+│   └── detectors/
+│       ├── __init__.py
+│       ├── temporal_leakage.py
+│       ├── label_noise.py
+│       └── dag_violations.py
+│
+├── examples/
+│   ├── fraud_detection.ipynb
+│   └── marketing_uplift.ipynb
+│
+└── tests/
+    └── test_temporal_leakage.py
